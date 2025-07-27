@@ -378,6 +378,290 @@
             }
         }
 
+        /* 心形动画容器 */
+        .heart-shape-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.1;
+        }
+
+        .heart-shape {
+            width: 300px;
+            height: 270px;
+            position: relative;
+            animation: heartBeat 3s ease-in-out infinite;
+        }
+
+        .heart-shape:before,
+        .heart-shape:after {
+            content: '';
+            width: 150px;
+            height: 240px;
+            position: absolute;
+            left: 75px;
+            transform: rotate(-45deg);
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb3b3);
+            border-radius: 150px 150px 0 0;
+            transform-origin: 0 100%;
+            animation: heartPulse 3s ease-in-out infinite;
+        }
+
+        .heart-shape:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            25% {
+                transform: scale(1.1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+            75% {
+                transform: scale(1.1);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.05);
+            }
+        }
+
+        /* 心形轨迹粒子 */
+        .heart-particle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #ff6b6b;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .heart-particle:before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            top: -4px;
+            left: 0;
+        }
+
+        .heart-particle:after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            top: -4px;
+            left: 4px;
+        }
+
+        /* 心形路径动画 */
+        @keyframes heartPath {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            25% {
+                transform: translate(20px, -30px) scale(1.2);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(0, -50px) scale(0.8);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translate(-20px, -30px) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 大心形背景装饰 */
+        .heart-decoration {
+            position: fixed;
+            font-size: 200px;
+            color: rgba(255, 107, 107, 0.05);
+            pointer-events: none;
+            z-index: -3;
+            animation: decorationFloat 20s ease-in-out infinite;
+        }
+
+        .heart-decoration:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .heart-decoration:nth-child(2) {
+            top: 60%;
+            right: 5%;
+            animation-delay: 7s;
+        }
+
+        .heart-decoration:nth-child(3) {
+            bottom: 10%;
+            left: 10%;
+            animation-delay: 14s;
+        }
+
+        @keyframes decorationFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.05;
+            }
+            33% {
+                transform: translateY(-30px) rotate(5deg) scale(1.1);
+                opacity: 0.08;
+            }
+            66% {
+                transform: translateY(-15px) rotate(-3deg) scale(0.9);
+                opacity: 0.06;
+            }
+        }
+
+        /* 心形流星效果 */
+        .heart-meteor {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 200;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8));
+        }
+
+        .heart-meteor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -200px;
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.8), rgba(255, 107, 107, 0.4), transparent);
+            transform: translateY(-50%);
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.6);
+        }
+
+        @keyframes meteorAcross {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(-45deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            40% {
+                transform: translateX(50vw) translateY(30vh) rotate(-45deg);
+                opacity: 1;
+            }
+            60% {
+                transform: translateX(70vw) translateY(10vh) rotate(-45deg);
+                opacity: 1;
+            }
+            70% {
+                transform: translateX(80vw) translateY(5vh) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(120vw) translateY(-50vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes meteorHover {
+            0%, 100% {
+                transform: translateY(0px) scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.8));
+            }
+            50% {
+                transform: translateY(-10px) scale(1.2) rotate(10deg);
+                filter: drop-shadow(0 0 20px rgba(255, 107, 107, 1));
+            }
+        }
+
+        @keyframes meteorPulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        /* 流星轨迹粒子 */
+        .meteor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.8), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 150;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        /* 停留时的光环效果 */
+        .meteor-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.3), rgba(255, 107, 107, 0.1), transparent);
+            animation: glowPulse 2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.8;
+            }
+        }
+
         @keyframes floatUp {
             0% {
                 transform: translateY(0) rotate(0deg) scale(1);
@@ -428,6 +712,16 @@
     </style>
 </head>
 <body>
+    <!-- 背景心形装饰 -->
+    <div class="heart-decoration">💖</div>
+    <div class="heart-decoration">💕</div>
+    <div class="heart-decoration">💝</div>
+
+    <!-- 中央大心形动画 -->
+    <div class="heart-shape-container">
+        <div class="heart-shape"></div>
+    </div>
+
     <div class="floating-heart heart-1">💕</div>
     <div class="floating-heart heart-2">💖</div>
     <div class="floating-heart heart-3">💝</div>
@@ -526,6 +820,122 @@
             }, 8000);
         }
 
+        function createHeartParticles() {
+            var colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3', '#ff9ff3', '#ffa8cc'];
+            
+            for (var i = 0; i < 5; i++) {
+                setTimeout(function() {
+                    var particle = document.createElement('div');
+                    particle.className = 'heart-particle';
+                    particle.style.left = (window.innerWidth / 2) + 'px';
+                    particle.style.top = (window.innerHeight / 2) + 'px';
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // 心形路径计算
+                    var angle = Math.random() * Math.PI * 2;
+                    var radius = 50 + Math.random() * 100;
+                    var heartX = radius * Math.cos(angle);
+                    var heartY = radius * Math.sin(angle) - Math.abs(Math.cos(angle)) * Math.sqrt(Math.abs(heartX)) * 0.5;
+                    
+                    particle.style.animation = 'heartPath 4s ease-in-out infinite';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(function() {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 4000);
+                }, i * 200);
+            }
+        }
+
+        function createHeartMeteor() {
+            var meteors = ['💖', '💕', '💝', '❤️'];
+            var meteor = document.createElement('div');
+            meteor.className = 'heart-meteor';
+            meteor.innerHTML = meteors[Math.floor(Math.random() * meteors.length)];
+            
+            // 随机起始位置（从左上角不同位置开始）
+            var startX = -100 + Math.random() * 200;
+            var startY = window.innerHeight + Math.random() * 200;
+            
+            meteor.style.left = startX + 'px';
+            meteor.style.top = startY + 'px';
+            
+            // 添加光环效果
+            var glow = document.createElement('div');
+            glow.className = 'meteor-glow';
+            meteor.appendChild(glow);
+            
+            document.body.appendChild(meteor);
+            
+            // 流星划过动画
+            meteor.style.animation = 'meteorAcross 4s ease-out forwards';
+            
+            // 在轨迹上留下粒子
+            var trailInterval = setInterval(function() {
+                createMeteorTrail(meteor);
+            }, 100);
+            
+            // 2秒后停止在页面中央
+            setTimeout(function() {
+                if (meteor.parentNode) {
+                    // 停止移动，开始悬停动画
+                    meteor.style.animation = 'meteorHover 1s ease-in-out infinite';
+                    meteor.style.position = 'fixed';
+                    meteor.style.left = '50%';
+                    meteor.style.top = '30%';
+                    meteor.style.transform = 'translate(-50%, -50%)';
+                    meteor.style.fontSize = '40px';
+                    
+                    clearInterval(trailInterval);
+                    
+                    // 停留3秒后开始消失
+                    setTimeout(function() {
+                        if (meteor.parentNode) {
+                            meteor.style.animation = 'meteorPulse 0.5s ease-in-out 3, fadeOut 1s ease-in-out forwards';
+                            
+                            // 最终移除
+                            setTimeout(function() {
+                                if (meteor.parentNode) {
+                                    meteor.parentNode.removeChild(meteor);
+                                }
+                            }, 2500);
+                        }
+                    }, 3000);
+                }
+            }, 2000);
+            
+            // 安全清理
+            setTimeout(function() {
+                clearInterval(trailInterval);
+                if (meteor.parentNode) {
+                    meteor.parentNode.removeChild(meteor);
+                }
+            }, 8000);
+        }
+
+        function createMeteorTrail(meteorElement) {
+            if (!meteorElement.parentNode) return;
+            
+            var rect = meteorElement.getBoundingClientRect();
+            var trail = document.createElement('div');
+            trail.className = 'meteor-trail';
+            trail.style.left = (rect.left + rect.width / 2) + 'px';
+            trail.style.top = (rect.top + rect.height / 2) + 'px';
+            trail.style.animation = 'trailFade 1s ease-out forwards';
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(function() {
+                if (trail.parentNode) {
+                    trail.parentNode.removeChild(trail);
+                }
+            }, 1000);
+        }
+
         function createSparkle() {
             var sparkle = document.createElement('div');
             sparkle.className = 'sparkle';
@@ -576,6 +986,15 @@
                 // 浮动爱心
                 setInterval(createFloatingHeart, 2000);
                 
+                // 心形粒子效果
+                setInterval(createHeartParticles, 3000);
+                
+                // 心形流星（每15秒一次，比较稀有）
+                setInterval(createHeartMeteor, 15000);
+                
+                // 添加fadeOut动画
+                addFadeOutAnimation();
+                
                 // 魔法闪烁
                 setInterval(createSparkle, 500);
                 
@@ -586,6 +1005,10 @@
             calculateDays();
             addClickEffects();
             setInterval(createFloatingHeart, 2000);
+            setInterval(createHeartParticles, 3000);
+            setInterval(createPulsingHeart, 8000);
+            setInterval(createHeartMeteor, 15000);
+            addFadeOutAnimation();
             setInterval(createSparkle, 500);
             setInterval(calculateDays, 3600000);
         }
