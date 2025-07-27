@@ -176,6 +176,101 @@
             50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6); }
         }
 
+        .first-date-card {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 25px 0;
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+            animation: cardSlideIn 1.5s ease-out 1.2s both;
+            transform: perspective(1000px) rotateX(5deg);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .first-date-card:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .first-date-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 4s linear infinite;
+            pointer-events: none;
+        }
+
+        .card-header {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        .date-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .date-main {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: dateGlow 2.5s ease-in-out infinite;
+        }
+
+        .date-detail {
+            font-size: 1.1em;
+            margin: 10px 0;
+            opacity: 0.9;
+            animation: fadeInUp 1.8s ease-out 1.5s both;
+        }
+
+        .date-days {
+            font-size: 1.2em;
+            margin-top: 15px;
+            animation: fadeInUp 2s ease-out 1.7s both;
+        }
+
+        .highlight {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #ffeb3b;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+            animation: highlightPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dateGlow {
+            0%, 100% { 
+                color: white;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                color: #ffeb3b;
+                text-shadow: 0 0 20px rgba(255, 235, 59, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+            }
+            50% { 
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(255, 235, 59, 1), 0 0 30px rgba(255, 235, 59, 0.8);
+            }
+        }
+
         .days-counter {
             background: linear-gradient(135deg, #4facfe, #00f2fe, #43e97b);
             color: white;
@@ -700,6 +795,18 @@
             .love-quote {
                 font-size: 1.1em;
             }
+
+            .first-date-card {
+                padding: 25px;
+            }
+
+            .date-main {
+                font-size: 1.8em;
+            }
+
+            .card-header {
+                font-size: 1.2em;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -749,6 +856,15 @@
             <div class="info-item">
                 <span class="info-label">💑 在一起</span>
                 <span class="info-value">敬请期待 💕</span>
+            </div>
+        </div>
+
+        <div class="first-date-card">
+            <div class="card-header">💕 我们的第一次约会</div>
+            <div class="date-info">
+                <div class="date-main">2025年5月25日</div>
+                <div class="date-detail">从相遇到第一次约会</div>
+                <div class="date-days">仅仅用了 <span class="highlight">7天</span> 💖</div>
             </div>
         </div>
 
