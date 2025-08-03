@@ -283,6 +283,12 @@
             overflow: hidden;
         }
 
+        .together-counter {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8cc);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+            animation: counterBounce 1.5s ease-out 2.5s both;
+        }
+
         .days-counter::before {
             content: '';
             position: absolute;
@@ -855,7 +861,7 @@
             </div>
             <div class="info-item">
                 <span class="info-label">💑 在一起</span>
-                <span class="info-value">敬请期待 💕</span>
+                <span class="info-value">2025年8月3日 💕</span>
             </div>
         </div>
 
@@ -874,6 +880,12 @@
             <div>天啦！💖</div>
         </div>
 
+        <div class="days-counter together-counter">
+            <div>我们在一起了</div>
+            <div class="days-number" id="daysTogetherAsCouple">0</div>
+            <div>天啦！💕</div>
+        </div>
+
         <div class="love-quote">
             在对的时间遇见对的人，是一种幸福。<br>
             在错的时间遇见对的人，是一种遗憾。<br>
@@ -888,14 +900,27 @@
     <script>
         function calculateDays() {
             var startDate = new Date('2025-05-18');
+            var togetherDate = new Date('2025-08-03');
             var today = new Date();
+            
+            // 计算认识天数
             var diffTime = Math.abs(today - startDate);
             var diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            // 计算在一起天数
+            var togetherTime = Math.abs(today - togetherDate);
+            var togetherDays = Math.floor(togetherTime / (1000 * 60 * 60 * 24));
             
             var daysElement = document.getElementById('daysTogether');
             if (daysElement) {
                 // 数字变化动画
                 animateNumber(daysElement, parseInt(daysElement.textContent) || 0, diffDays);
+            }
+            
+            var togetherElement = document.getElementById('daysTogetherAsCouple');
+            if (togetherElement) {
+                // 数字变化动画
+                animateNumber(togetherElement, parseInt(togetherElement.textContent) || 0, togetherDays);
             }
         }
 
